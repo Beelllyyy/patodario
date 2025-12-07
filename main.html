@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Matrimonio dell'Anno: Tartufo & Giovanni</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Estetico --- */
+        :root {
+            --color-gold: #d4af37; /* Colore dorato per il cane */
+            --color-red: #c23b22; /* Colore rosso terracotta per i pantaloni */
+            --color-cream: #f8f5e6; /* Sfondo crema */
+            --color-text: #4a4a4a; /* Testo grigio scuro */
+            --color-accent: #789b73; /* Verde salvia per contrasto */
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--color-cream);
+            color: var(--color-text);
+            line-height: 1.6;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10-10-4.477-10-10z' fill='%23d4af37' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        h1, h2, h3 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--color-red);
+            text-align: center;
+        }
+
+        h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 2.5rem; margin-top: 2rem; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Header & Hero Section --- */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), var(--color-cream));
+            border-bottom: 3px solid var(--color-gold);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .couple-photos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .photo-frame {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid var(--color-gold);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .heart-divider {
+            font-size: 3rem;
+            color: var(--color-red);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Sections --- */
+        section {
+            background: white;
+            padding: 40px;
+            margin: 40px auto;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        section::before {
+            content: '♥';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            color: var(--color-gold);
+            background: var(--color-cream);
+            padding: 0 15px;
+            border-radius: 50%;
+        }
+
+        .story-text {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* --- Invitation Details --- */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .detail-item i {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* --- RSVP Form --- */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            box-sizing: border-box; /* Importante per il padding */
+            font-family: 'Quicksand', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--color-gold);
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: var(--color-red);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #a0301b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(194, 59, 34, 0.3);
+        }
+
+        #form-feedback {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--color-accent);
+            padding: 30px;
+            display: none; /* Nascosto inizialmente */
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: var(--color-gold);
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .photo-frame { width: 180px; height: 180px; }
+            section { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Tartufo & Giovanni</h1>
+            <p class="tagline">Due cuori, quattro zampe, un amore che non conosce guinzaglio.</p>
+            
+            <div class="couple-photos">
+                <div class="photo-frame">
+                    <img src="cane_sposo.jpg" alt="Il Sposo a quattro zampe">
+                </div>
+                <div class="heart-divider">&</div>
+                <div class="photo-frame">
+                    <img src="uomo_sposo.jpg" alt="Il Sposo a due zampe">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="la-storia">
+            <h2>La Nostra Storia d'Amore</h2>
+            <div class="story-text">
+                <p>Tutto è iniziato in un pomeriggio d'autunno. Giovanni stava sorseggiando un caffè (proprio come quello nella foto!), pensando ai massimi sistemi e alle prese di Jiu-Jitsu. Tartufo stava ispezionando un cespuglio particolarmente interessante.</p>
+                <p>I loro sguardi si sono incrociati. Tartufo ha sentito l'odore inconfondibile di un biscottino nella tasca di Giovanni. Giovanni ha visto il tartufo umido più bello del mondo. È stato amore al primo "bau".</p>
+                <p>Oggi, dopo anni di condivisione del divano, lunghe passeggiate e lotte per chi deve tenere la coperta, hanno deciso di ufficializzare la loro unione. Perché l'amore vero non guarda in faccia alla specie!</p>
+            </div>
+        </section>
+
+        <section id="invito">
+            <h2>I Dettagli del Grande Giorno</h2>
+            <p style="text-align: center; font-size: 1.1rem;">Siete invitati a celebrare l'unione più improbabile e adorabile dell'anno!</p>
+            
+            <div class="details-grid">
+                <div class="detail-item">
+                    <i>📅</i>
+                    <h3>Quando</h3>
+                    <p>Sabato 26 Ottobre 2024<br>Ore 11:00 (Orario umano)<br>Ore 11:05 (Orario canino - siate puntuali!)</p>
+                </div>
+                <div class="detail-item">
+                    <i>📍</i>
+                    <h3>Dove</h3>
+                    <p>Parco Centrale, Area Cani VIP<br>(Seguirà rinfresco nel salotto di Giovanni)</p>
+                </div>
+                <div class="detail-item">
+                    <i>👔</i>
+                    <h3>Dress Code</h3>
+                    <p>Umani: Casual Elegante (evitate abiti che attirano i peli)<br>Cani: È gradito il papillon.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="rsvp">
+            <h2>Conferma la tua Presenza</h2>
+            <p style="text-align: center;">Facci sapere se tu (e il tuo eventuale accompagnatore peloso) ci sarete!</p>
+
+            <div id="form-feedback">
+                🎉 Evviva! Grazie per aver confermato. Non vediamo l'ora di scodinzolare con voi! 🎉
+            </div>
+
+            <form id="wedding-rsvp-form">
+                <div class="form-group">
+                    <label for="name">Il tuo nome (Umano):</label>
+                    <input type="text" id="name" name="name" required placeholder="Mario Rossi">
+                </div>
+
+                <div class="form-group" style="display: flex; gap: 20px;">
+                    <div style="flex: 1;">
+                        <label for="guests-human">Numero ospiti umani:</label>
+                        <select id="guests-human" name="guests-human">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3+</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="guests-dog">Numero ospiti canini:</label>
+                        <select id="guests-dog" name="guests-dog">
+                            <option value="0">0 (Vengo solo)</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="many">Un branco!</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Note o Allergie (es. intolleranza ai croccantini):</label>
+                    <textarea id="notes" name="notes" rows="4" placeholder="Scrivi qui..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Conferma Partecipazione! 🐾</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Tartufo & Giovanni - L'amore vince sempre (e anche chi ha i biscotti).</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('wedding-rsvp-form');
+            const feedback = document.getElementById('form-feedback');
+
+            form.addEventListener('submit', function(event) {
+                // Impediamo il comportamento standard del form (ricaricare la pagina)
+                event.preventDefault();
+
+                // Qui normalmente invieresti i dati a un server.
+                // Per questa demo, simuliamo solo un invio riuscito.
+                
+                console.log("Form inviato! Dati raccolti:");
+                const formData = new FormData(form);
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                }
+
+                // Effetto visivo: nascondi il form e mostra il messaggio di ringraziamento
+                form.style.opacity = '0';
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    feedback.style.display = 'block';
+                    // Piccola animazione di entrata per il feedback
+                    feedback.style.opacity = '0';
+                    feedback.style.transform = 'translateY(20px)';
+                    feedback.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        feedback.style.opacity = '1';
+                        feedback.style.transform = 'translateY(0)';
+                    }, 50);
+
+                }, 300); // Aspetta che la transizione di opacity del form finisca
+            });
+        });
+    </script>
+
+</body>
+</html>
